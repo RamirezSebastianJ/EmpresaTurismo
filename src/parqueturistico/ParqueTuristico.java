@@ -1,21 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package parqueturistico;
 
-/**
- *
- * @author SERVIDOR
- */
-public class ParqueTuristico {
+import COR.Turismo;
 
+public class ParqueTuristico {
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Turismo turismo = new Turismo();
+        turismo.asignarGuia(16);
+        turismo.asignarGuia(30);
+        turismo.asignarGuia(10);
     }
     
 }
