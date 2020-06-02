@@ -40,6 +40,8 @@ public class InterfazUsuario extends javax.swing.JFrame {
 
         jPanelLogin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jButtonNombreUser.setFont(new java.awt.Font("OCR A Extended", 1, 12)); // NOI18N
+        jButtonNombreUser.setForeground(new java.awt.Color(0, 0, 0));
         jButtonNombreUser.setText("Usuario");
         jButtonNombreUser.setBorderPainted(false);
         jButtonNombreUser.setContentAreaFilled(false);
@@ -53,9 +55,11 @@ public class InterfazUsuario extends javax.swing.JFrame {
                 jButtonNombreUserActionPerformed(evt);
             }
         });
-        jPanelLogin.add(jButtonNombreUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 46, 89, -1));
+        jPanelLogin.add(jButtonNombreUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 46, 100, -1));
         jPanelLogin.add(jTextFieldUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(143, 47, 170, -1));
 
+        jButtonPassword.setFont(new java.awt.Font("OCR A Extended", 1, 12)); // NOI18N
+        jButtonPassword.setForeground(new java.awt.Color(0, 0, 0));
         jButtonPassword.setText("Contraseña");
         jButtonPassword.setBorderPainted(false);
         jButtonPassword.setContentAreaFilled(false);
@@ -72,6 +76,8 @@ public class InterfazUsuario extends javax.swing.JFrame {
         jPanelLogin.add(jButtonPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 87, -1, -1));
         jPanelLogin.add(jTextFieldPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(143, 88, 170, -1));
 
+        jButtonLogin.setFont(new java.awt.Font("OCR A Extended", 1, 12)); // NOI18N
+        jButtonLogin.setForeground(new java.awt.Color(0, 0, 0));
         jButtonLogin.setText("Ingresar");
         jButtonLogin.setFocusable(false);
         jPanelLogin.add(jButtonLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, -1, -1));

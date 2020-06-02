@@ -36,9 +36,16 @@ public class InterfazInicial extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jButtonAdministrador.setFont(new java.awt.Font("OCR A Extended", 1, 12)); // NOI18N
         jButtonAdministrador.setText("Administrador");
         jButtonAdministrador.setFocusable(false);
+        jButtonAdministrador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAdministradorActionPerformed(evt);
+            }
+        });
 
+        jButtonUsuario.setFont(new java.awt.Font("OCR A Extended", 1, 12)); // NOI18N
         jButtonUsuario.setText("Usuario");
         jButtonUsuario.setFocusable(false);
 
@@ -47,11 +54,11 @@ public class InterfazInicial extends javax.swing.JFrame {
         jPanelSelecUsuariosLayout.setHorizontalGroup(
             jPanelSelecUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelSelecUsuariosLayout.createSequentialGroup()
-                .addContainerGap(43, Short.MAX_VALUE)
+                .addContainerGap(25, Short.MAX_VALUE)
                 .addGroup(jPanelSelecUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButtonAdministrador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanelSelecUsuariosLayout.setVerticalGroup(
             jPanelSelecUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -60,11 +67,12 @@ public class InterfazInicial extends javax.swing.JFrame {
                 .addComponent(jButtonAdministrador)
                 .addGap(26, 26, 26)
                 .addComponent(jButtonUsuario)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanelSelecUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 180, 100));
 
+        jButton1.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jButton1.setText("BIENVENIDO");
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
@@ -78,23 +86,27 @@ public class InterfazInicial extends javax.swing.JFrame {
         jPanelBienvenido.setLayout(jPanelBienvenidoLayout);
         jPanelBienvenidoLayout.setHorizontalGroup(
             jPanelBienvenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelBienvenidoLayout.createSequentialGroup()
-                .addGap(153, 153, 153)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBienvenidoLayout.createSequentialGroup()
+                .addContainerGap(102, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addContainerGap(154, Short.MAX_VALUE))
+                .addGap(94, 94, 94))
         );
         jPanelBienvenidoLayout.setVerticalGroup(
             jPanelBienvenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBienvenidoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanelBienvenidoLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jButton1)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanelBienvenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 400, 40));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdministradorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonAdministradorActionPerformed
 
     /**
      * @param args the command line arguments

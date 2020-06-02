@@ -3,8 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/juans/Documents/NetBeansProjects/EmpresaTursimo/src/empresatursimo/MVC/VentanaUsuario.java</file>
-            <file>file:/C:/Users/juans/Documents/NetBeansProjects/EmpresaTursimo/src/empresatursimo/MVC/ControladorPrincipal.java</file>
+            <file>file:/C:/Users/juans/Documents/GitHub/EmpresaTurismo/src/ConexionMySQL/base.java</file>
+            <file>file:/C:/Users/juans/Documents/GitHub/EmpresaTurismo/src/empresatursimo/MVC/InterfazAdministrador.java</file>
+            <file>file:/C:/Users/juans/Documents/GitHub/EmpresaTurismo/src/empresatursimo/MVC/InterfazInicial.java</file>
+            <file>file:/C:/Users/juans/Documents/GitHub/EmpresaTurismo/src/empresatursimo/MVC/VentanaAdministrador.java</file>
+            <file>file:/C:/Users/juans/Documents/GitHub/EmpresaTurismo/src/Pruebas/Ejemplo.java</file>
+            <file>file:/C:/Users/juans/Documents/GitHub/EmpresaTurismo/src/empresatursimo/MVC/InterfazUsuario.java</file>
         </group>
     </open-files>
 </project-private>
