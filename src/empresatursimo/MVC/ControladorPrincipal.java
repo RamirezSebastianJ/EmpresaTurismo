@@ -11,8 +11,10 @@ import javax.swing.JOptionPane;
 
 
 public class ControladorPrincipal implements ActionListener{
+    
+    public LogicaPrincipal logicaPrincipal = new LogicaPrincipal();
 
-    //Argumentos para tener en ceunta la sellecion para asber que datos deben ser capturados
+    //Argumentos para tener en ceunta la selecion para asber que datos deben ser capturados
     int opcionVAdmin = 0; //opcion para saber que datos capturar en ventana Admin,  1 Registrar Usuario, 2. Crear Paquete
     int opcionVUsuario = 0; //opcion para saber que datos capturar en ventana Usuario,  1 Comprar Paquetes, 2. Mis Paquetes
     
@@ -31,6 +33,7 @@ public class ControladorPrincipal implements ActionListener{
     
     public ControladorPrincipal(VentanaAdministrador ventanAdmin, InterfazAdministrador intfAdmin, InterfazInicial intInicial, 
             InterfazUsuario intUsuario, VentanaUsuario ventanaUsuario) {
+        
         
         this.ventanAdmin = ventanAdmin;
         this.intfAdmin = intfAdmin;
@@ -76,6 +79,7 @@ public class ControladorPrincipal implements ActionListener{
         this.ventanAdmin.jButtonCancelarCancelar.addActionListener(this);
         this.ventanAdmin.jButtonGuardarPaquete.addActionListener(this);
         this.ventanAdmin.jButtonRegistar.addActionListener(this);
+        this.ventanAdmin.jButtonRegistrarUsuario.addActionListener(this);
         this.ventanAdmin.jButtonCrearPaquete.addActionListener(this);
         this.ventanAdmin.jTextFieldPassword.addActionListener(this);
         
@@ -138,6 +142,7 @@ public class ControladorPrincipal implements ActionListener{
         ventanAdmin.setVisible(false);
     }    
     
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         
@@ -155,28 +160,29 @@ public class ControladorPrincipal implements ActionListener{
         
         //Eventos para InterfazAdministrador
         if(e.getSource()==intUsuario.jButtonLogin){
-            /*
-            *DEBE IR UN CONDICIONAL 
-            */
-            finalizarInterfazUsuario();
-            iniciarVentanaUsuario();
+            boolean condicion = logicaPrincipal.login(intUsuario.jTextFieldUsuario.getText(), intUsuario.jTextFieldPassword.getText(), 2);
+            if(condicion){
+                finalizarInterfazUsuario();
+                iniciarVentanaUsuario();  
+            }
         }
         
         if(e.getSource()==intfAdmin.jButtonLogin){
-            /*
-            *DEBE IR UN CONDICIONAL 
-            */
-            finalizarInterfazAdministrador();
-            iniciarVentanaAdministrador();  
+            boolean condicion = logicaPrincipal.login(intfAdmin.jTextFieldUsuario.getText(), intfAdmin.jTextFieldPassword.getText(), 1);
+            if(condicion){
+                finalizarInterfazAdministrador();
+                iniciarVentanaAdministrador();  
+            }
         }
         
         
-        //Eventos para VentanaAdinistrador
+        //Eventos para VentanaAdministrador
         
         //Evenetos VentanaAdministrador - Cambio de los jPanel
         if(e.getSource()==ventanAdmin.jButtonRegistar){
             ventanAdmin.jPanelRegistrarUsuario.setVisible(true);
             ventanAdmin.jPanelCraerPaquete.setVisible(false);
+            auxiliarUsuario = new Usuario();
             opcionVAdmin = 1;
         }
         if(e.getSource()==ventanAdmin.jButtonCrearPaquete){
@@ -193,25 +199,34 @@ public class ControladorPrincipal implements ActionListener{
         //Captura de Datos en VentanaAdministrador para crear Usuario
         if(opcionVAdmin == 1){
             if(e.getSource () == ventanAdmin.jComboBoxTipo ){
-                String auxTipoCliente = (String)ventanAdmin.jComboBoxTipo.getSelectedItem();
-                auxiliarUsuario.setTipoCliente(parseInt(auxTipoCliente));
+                int auxTipoCliente = parseInt((String) ventanAdmin.jComboBoxTipo.getSelectedItem());
+                System.out.println("tipo elegido:" + auxTipoCliente);
+                auxiliarUsuario.setTipo_usuario_idtipo_usuario(auxTipoCliente);
             }
             
             if(e.getSource () == ventanAdmin.jComboBoxRiesgo ){
                 String auxTipoCliente = (String)ventanAdmin.jComboBoxRiesgo.getSelectedItem();
-                auxiliarUsuario.setTipoRiesgo(parseInt(auxTipoCliente));
+                //auxiliarUsuario.setTipoRiesgo(parseInt(auxTipoCliente));
             }
             
-            if(e.getSource () == ventanAdmin.jButtonRegistar  ){ 
-                if(auxiliarUsuario.getTipoCliente()!=0 && auxiliarUsuario.getTipoRiesgo()!=0){
-                    if(ventanAdmin.jTextNUsuario.getText().length()>1 && ventanAdmin.jButtonTelefono.getText().length()>1 &&
-                            ventanAdmin.jButtonDNI.getText().length()>1 && ventanAdmin.jTextFieldPassword.getText().length()>1
+            if(e.getSource () == ventanAdmin.jButtonRegistrarUsuario  ){ 
+                if(auxiliarUsuario.getTipo_usuario_idtipo_usuario()!=0){
+                    if(ventanAdmin.jTextNUsuario.getText().length()>1 && ventanAdmin.jTextDNI.getText().length()>1 && 
+                            ventanAdmin.jTextFieldPassword.getText().length()>1
                             ){
-                        auxiliarUsuario.setNombre(ventanAdmin.jTextNUsuario.getText());
-                        auxiliarUsuario.setTelefono(parseInt(ventanAdmin.jButtonTelefono.getText()));
-                        auxiliarUsuario.setDni(parseInt(ventanAdmin.jButtonDNI.getText()));
-                        auxiliarUsuario.setPassword(parseInt(ventanAdmin.jTextFieldPassword.getText()));
+                        auxiliarUsuario.setLogin(ventanAdmin.jTextNUsuario.getText());
+                        //auxiliarUsuario.setTelefono(parseInt(ventanAdmin.jButtonTelefono.getText()));
+                        auxiliarUsuario.setIdusuario(parseInt(ventanAdmin.jTextDNI.getText()));
+                        auxiliarUsuario.setPass(ventanAdmin.jTextFieldPassword.getText());
                         opcionVAdmin = 0;
+                        boolean condicion = logicaPrincipal.registrar (auxiliarUsuario);
+                        if(condicion){
+                            JOptionPane.showMessageDialog(null, "Usuario Registrado Con EXITO!");
+                        }else{
+                            JOptionPane.showMessageDialog(null, "ERROR DE REGISTRO");
+                        }
+                        
+                        
                     }else{
                         JOptionPane.showMessageDialog(null, "Datos incompletos, Verifique Por favor");
                     }                   
@@ -225,39 +240,38 @@ public class ControladorPrincipal implements ActionListener{
         if(opcionVAdmin == 2){
             if(e.getSource () == ventanAdmin.jComboBoxTpasaje ){
                 String auxCadena = (String)ventanAdmin.jComboBoxTpasaje.getSelectedItem();
-                auxiliarUsuario.setTipoCliente(parseInt(auxCadena));
+                auxiliarPaqueteTurismo.setTipo_pasaje(parseInt(auxCadena));
             }
             
             if(e.getSource () == ventanAdmin.jComboBoxEscalas ){
                 String auxCadena = (String)ventanAdmin.jComboBoxEscalas.getSelectedItem();
-                auxiliarUsuario.setTipoRiesgo(parseInt(auxCadena));
+                auxiliarPaqueteTurismo.setEscala(parseInt(auxCadena));
+
             }
 
             if(e.getSource () == ventanAdmin.jComboBoxHEstrellas ){
                 String auxCadena = (String)ventanAdmin.jComboBoxHEstrellas.getSelectedItem();
-                auxiliarUsuario.setTipoRiesgo(parseInt(auxCadena));
+                auxiliarPaqueteTurismo.setHotel_tipo_hotel(parseInt(auxCadena));
+
             }
 
             if(e.getSource () == ventanAdmin.jComboBoxCExcursiones ){
                 String auxCadena = (String)ventanAdmin.jComboBoxCExcursiones.getSelectedItem();
-                auxiliarUsuario.setTipoRiesgo(parseInt(auxCadena));
+                //auxiliarUsuario.setTipoRiesgo(parseInt(auxCadena));
                 int auxCExcursiones = parseInt(auxCadena);
-                for (int i = 0; i < auxCExcursiones ; i++) {
+                /*for (int i = 0; i < auxCExcursiones ; i++) {
                     String auxCadenaNombreE = JOptionPane.showInputDialog("Nombre de la Empresa "+i+1);
-                    String auxCadenaDescripcion = JOptionPane.showInputDialog("Descricion " + i+1);
-                    auxiliarPaqueteTurismo.setExcursiones(auxCadenaNombreE, auxCadenaDescripcion);
-                }
+                    String auxCadenaDescripcion = JOptionPane.showInputDialog("Descrpicion " + i+1);
+                     
+                }*/
+                auxiliarPaqueteTurismo.setExcursiones(auxCExcursiones);
                 ventanAdmin.jComboBoxCExcursiones.disable();
             }
             
             if(e.getSource () == ventanAdmin.jComboBoxNBuses ){
                 String auxCadena = (String)ventanAdmin.jComboBoxNBuses.getSelectedItem();
                 int auxNBuses = parseInt(auxCadena);
-                for (int i = 0; i < auxNBuses ; i++) {
-                    String auxCadenaOrigen = JOptionPane.showInputDialog("Origen " + i+1);
-                    String auxCadenaDestino = JOptionPane.showInputDialog("Destino " + i+1);
-                    auxiliarPaqueteTurismo.setBusesTraslados(auxCadenaOrigen, auxCadenaDestino);
-                }
+                auxiliarPaqueteTurismo.setTraslados(parseInt(auxCadena));
                 ventanAdmin.jComboBoxNBuses.disable();    
             }
 
@@ -268,17 +282,11 @@ public class ControladorPrincipal implements ActionListener{
                     
                     auxiliarPaqueteTurismo.setDestino(ventanAdmin.jTextDestino.getText());
                     auxiliarPaqueteTurismo.setDias(parseInt(ventanAdmin.jTextDias.getText()));
-                    auxiliarPaqueteTurismo.setIdVuelo(parseInt(ventanAdmin.jTextIDVuelo.getText()));
-                    auxiliarPaqueteTurismo.setOrigenVuelo(ventanAdmin.jTextOrigenVuelo.getText());
-                    auxiliarPaqueteTurismo.setNombreHotel(ventanAdmin.jTextNombreH.getText());
-                    auxiliarPaqueteTurismo.setEstrellas(parseInt((String)(ventanAdmin.jComboBoxHEstrellas.getSelectedItem())));
-                    auxiliarPaqueteTurismo.setTipoPasaje(parseInt((String)(ventanAdmin.jComboBoxTpasaje.getSelectedItem())));
-                    auxiliarPaqueteTurismo.setEscalas(parseInt((String)(ventanAdmin.jComboBoxEscalas.getSelectedItem())));
-                    ventanAdmin.jComboBoxNBuses.enable();
-                    ventanAdmin.jComboBoxCExcursiones.enable();
-                    ventanAdmin.jPanelCraerPaquete.setVisible(false);
-                    ventanAdmin.jPanelRegistrarUsuario.setVisible(false);
-                    opcionVAdmin = 0;
+                    auxiliarPaqueteTurismo.setOrigen(ventanAdmin.jTextOrigenVuelo.getText());
+                    auxiliarPaqueteTurismo.setAereo_idvuelo(parseInt(ventanAdmin.jTextIDVuelo.getText()));
+                    auxiliarPaqueteTurismo.setHotel_nombre_hotel(ventanAdmin.jTextNombreH.getText());
+                    //auxiliarPaqueteTurismo.setHotel_idhotel();
+                    
                 }else{
                     JOptionPane.showMessageDialog(null, "Datos incompletos, Verifique Por favor");
                 }          
@@ -297,7 +305,7 @@ public class ControladorPrincipal implements ActionListener{
         }
         
         if(e.getSource() == ventanaUsuario.jComboBoxPaquetesDisponibles){
-            int aux = 0;
+            /*int aux = 0;
             aux = parseInt((String)ventanaUsuario.jComboBoxPaquetesDisponibles.getSelectedItem());
             auxiliarPaqueteTurismo = listAuxPaquetes.get(aux);
             String auxiliar = (auxiliarPaqueteTurismo.getDestino() + " " + " Dias: "+  auxiliarPaqueteTurismo.getDias() + "\n"
@@ -311,7 +319,7 @@ public class ControladorPrincipal implements ActionListener{
                 auxiliar = auxiliar + "\n Empresa: " +  auxExcursiones[i][0];
                 auxiliar = auxiliar + ".... Descripcion: " + auxExcursiones[i][1];
             }
-            ventanaUsuario.jTextAreaDecripcion.setText(auxiliar);
+            ventanaUsuario.jTextAreaDecripcion.setText(auxiliar);*/
         }
         
         if(e.getSource() == ventanaUsuario.jComboBoxCantidadDeCuotas){

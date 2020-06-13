@@ -6,81 +6,54 @@ import java.util.ArrayList;
 
 
 public class Usuario {
-    public String nombre;
-    public int dni;
-    public int telefono;
-    public int tipoCliente = 0;
-    public int tipoRiesgo = 0;
-    public int password;
-    
-    public ArrayList<PaquetesTurismo> paquetesReservados = new ArrayList<>();
-    public ArrayList<PaquetesTurismo> paquetesPendientes = new ArrayList<>();
+    public String login;
+    public String pass;
+    public int idusuario;
+    public int tipo_usuario_idtipo_usuario;
 
     public Usuario() {
     }
-
-    public Usuario(String nombre, int dni, int tipoCliente, int tipoRiesgo, int password, int telefono) {
-        this.nombre = nombre;
-        this.dni = dni;
-        this.tipoCliente = tipoCliente;
-        this.tipoRiesgo = tipoRiesgo;
-        this.password = password;
-        this.telefono = telefono;
+    
+    public Usuario(String login, String pass, int idusuario, int tipo_usuario_idtipo_usuario) {
+        this.login = login;
+        this.pass = pass;
+        this.idusuario = idusuario;
+        this.tipo_usuario_idtipo_usuario = tipo_usuario_idtipo_usuario;
     }
 
-    public String getNombre() {
-        return nombre;
+    
+    
+    public String getLogin() {
+        return login;
     }
 
-    public int getDni() {
-        return dni;
+    public String getPass() {
+        return pass;
     }
 
-    public int getTipoCliente() {
-        return tipoCliente;
+    public int getIdusuario() {
+        return idusuario;
     }
 
-    public int getTipoRiesgo() {
-        return tipoRiesgo;
+    public int getTipo_usuario_idtipo_usuario() {
+        return tipo_usuario_idtipo_usuario;
     }
 
-    public int getPassword() {
-        return password;
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
+
+    public void setIdusuario(int idusuario) {
+        this.idusuario = idusuario;
+    }
+
+    public void setTipo_usuario_idtipo_usuario(int tipo_usuario_idtipo_usuario) {
+        this.tipo_usuario_idtipo_usuario = tipo_usuario_idtipo_usuario;
     }
     
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public void setDni(int dni) {
-        this.dni = dni;
-    }
-
-    public void setTipoCliente(int tipoCliente) {
-        this.tipoCliente = tipoCliente;
-    }
-
-    public void setTipoRiesgo(int tipoRiesgo) {
-        this.tipoRiesgo = tipoRiesgo;
-    }
     
-    public void setPassword(int password) {
-        this.password = password;
-    }
-
-    public ArrayList<PaquetesTurismo> getPaquetesReservados() {
-        return paquetesReservados;
-    }
-
-    public void setPaquetesReservados(PaquetesTurismo paquetesReservados) {
-        this.paquetesReservados.add(paquetesReservados);
-    }
-
-    public int getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(int telefono) {
-        this.telefono = telefono;
-    }
 }

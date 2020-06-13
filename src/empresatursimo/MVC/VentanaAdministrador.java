@@ -43,7 +43,7 @@ public class VentanaAdministrador extends javax.swing.JFrame {
         jComboBoxTipo = new javax.swing.JComboBox<>();
         jComboBoxRiesgo = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
-        jButtonRegistrar = new javax.swing.JButton();
+        jButtonRegistrarUsuario = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
         jButtonNCliente1 = new javax.swing.JButton();
         jTextFieldPassword = new javax.swing.JTextField();
@@ -153,7 +153,7 @@ public class VentanaAdministrador extends javax.swing.JFrame {
         jComboBoxRiesgo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ","1", "2", "3"}));
         jPanelRegistrarUsuario.add(jComboBoxRiesgo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 295, -1));
 
-        jButtonRegistrar.setText("Registrar");
+        jButtonRegistrarUsuario.setText("Registrar");
 
         jButtonCancelar.setText("Cancelar");
 
@@ -163,7 +163,7 @@ public class VentanaAdministrador extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButtonRegistrar)
+                .addComponent(jButtonRegistrarUsuario)
                 .addGap(13, 13, 13)
                 .addComponent(jButtonCancelar)
                 .addContainerGap(15, Short.MAX_VALUE))
@@ -173,7 +173,7 @@ public class VentanaAdministrador extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonRegistrar)
+                    .addComponent(jButtonRegistrarUsuario)
                     .addComponent(jButtonCancelar)))
         );
 
@@ -544,7 +544,7 @@ public class VentanaAdministrador extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JButton jButtonCancelar;
+    public javax.swing.JButton jButtonCancelar;
     public javax.swing.JButton jButtonCancelarCancelar;
     public javax.swing.JButton jButtonCrearPaquete;
     public javax.swing.JButton jButtonDNI;
@@ -552,7 +552,7 @@ public class VentanaAdministrador extends javax.swing.JFrame {
     public javax.swing.JButton jButtonNCliente;
     public javax.swing.JButton jButtonNCliente1;
     public javax.swing.JButton jButtonRegistar;
-    private javax.swing.JButton jButtonRegistrar;
+    public javax.swing.JButton jButtonRegistrarUsuario;
     public javax.swing.JButton jButtonRiesgo;
     public javax.swing.JButton jButtonTelefono;
     public javax.swing.JButton jButtonTipo;

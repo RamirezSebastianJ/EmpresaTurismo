@@ -56,7 +56,7 @@ public class InterfazAdministrador extends javax.swing.JFrame {
         });
 
         jTextFieldUsuario.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jTextFieldUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        jTextFieldUsuario.setForeground(new java.awt.Color(0, 0, 0));
 
         jButtonPassword.setFont(new java.awt.Font("OCR A Extended", 1, 12)); // NOI18N
         jButtonPassword.setForeground(new java.awt.Color(0, 0, 0));
@@ -76,7 +76,7 @@ public class InterfazAdministrador extends javax.swing.JFrame {
         });
 
         jTextFieldPassword.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jTextFieldPassword.setForeground(new java.awt.Color(255, 255, 255));
+        jTextFieldPassword.setForeground(new java.awt.Color(0, 0, 0));
 
         jButtonLogin.setFont(new java.awt.Font("OCR A Extended", 1, 12)); // NOI18N
         jButtonLogin.setForeground(new java.awt.Color(0, 0, 0));

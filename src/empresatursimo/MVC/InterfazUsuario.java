@@ -56,6 +56,8 @@ public class InterfazUsuario extends javax.swing.JFrame {
             }
         });
         jPanelLogin.add(jButtonNombreUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 46, 100, -1));
+
+        jTextFieldUsuario.setForeground(new java.awt.Color(0, 0, 0));
         jPanelLogin.add(jTextFieldUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(143, 47, 170, -1));
 
         jButtonPassword.setFont(new java.awt.Font("OCR A Extended", 1, 12)); // NOI18N
@@ -74,6 +76,8 @@ public class InterfazUsuario extends javax.swing.JFrame {
             }
         });
         jPanelLogin.add(jButtonPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 87, -1, -1));
+
+        jTextFieldPassword.setForeground(new java.awt.Color(0, 0, 0));
         jPanelLogin.add(jTextFieldPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(143, 88, 170, -1));
 
         jButtonLogin.setFont(new java.awt.Font("OCR A Extended", 1, 12)); // NOI18N
